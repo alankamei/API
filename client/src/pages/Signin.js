@@ -11,13 +11,19 @@ const [formData, setFormData] = useState({
 const handleChange = (event) => {
     const {name, value} = event.target;
     setFormData((prevData)=>({
-        ...prevData, [name]:value
+        ...prevData, [name]:value,
     }))
+    
 }
 
 const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData)
+    console.log(formData);
+    setFormData({
+        username:'',
+        email:'',
+        password:'',
+    })
 }
 
   return (
