@@ -1,0 +1,45 @@
+# Python
+*.py[cod]
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+ 
+# Django
+*.sqlite3
+/db.sqlite3
+/media
+/staticfiles
+*.log
+
+# IDE and Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Secrets and configuration
+*.env
+*.local
+*.secrets.json
+
+# Other
+*.pot
+*.pyc
+*.coverage
+.coverage
+nosetests.xml
+*.egg-info/
+dist/
+build/
