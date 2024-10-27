@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middlware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'API.urls'
@@ -130,3 +130,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     # Add other allowed origins here
 ]
+
+AUTH_USER_MODEL = 'myAPI.CustomUser'
+AUTHENTICATION_BACKENDS = (
+    'myAPI.backends.EmailBackend',  # Replace 'myAPI' with your app name
+    'django.contrib.auth.backends.ModelBackend',  # Keep the default one for other cases
+)
