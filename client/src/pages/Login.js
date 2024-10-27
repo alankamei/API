@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import '../styles/login.css'; // Import your custom CSS file
 
 function Login() {
   const [success, setSuccess] = useState(null);
@@ -20,40 +21,46 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-        const response = await axios.post('http://localhost:8000/api/login/', formData);
-        setSuccess(response.data.message);
-        setFormData({ email: "", password: "" });
+      const response = await axios.post('http://localhost:8000/api/login/', formData);
+      setSuccess(response.data.message);
+      setFormData({ email: "", password: "" });
     } catch (error) {
-        console.error(error.response.data);  // Log the error response
-        setError(error.response.data.detail || 'Login failed');
+      console.error(error.response.data); // Log the error response
+      setError(error.response.data.detail || 'Login failed');
     }
-};
+  };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input
-          type='email'
-          placeholder="email"
-          name='email'
-          value={formData.email}
-          required
-          onChange={handleChange}
-        />
-        <label>Password:</label>
-        <input
-          type='password'
-          placeholder="password"
-          name='password'
-          value={formData.password}
-          required
-          onChange={handleChange}
-        />
-        <button type='submit'>Login</button>
-        {success && <p style={{color: 'green'}}>{success}</p>}
-        {error && <p style={{color: 'red'}}>{error}</p>}
+    <div className="container">
+      <h1 className="text-center">Login Page</h1>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label">Email:</label>
+          <input
+            type='email'
+            className='form-control'
+            placeholder="Enter your email"
+            name='email'
+            value={formData.email}
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Password:</label>
+          <input
+            type='password'
+            className='form-control'
+            placeholder="Enter your password"
+            name='password'
+            value={formData.password}
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <button type='submit' className='btn btn-teal'>Login</button>
+        {success && <p className="text-success">{success}</p>}
+        {error && <p className="text-danger">{error}</p>}
       </form>
     </div>
   );
