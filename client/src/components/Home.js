@@ -5,7 +5,7 @@ function Home() {
   return (
     <div>
         <h1>Let's learn how API works</h1>
-        <Link to='/signin'>Sigin</Link>
+        <Link to='/signup'>Signup</Link>
     </div>
   )
 }
