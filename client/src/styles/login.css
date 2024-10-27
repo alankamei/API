@@ -1,0 +1,68 @@
+/* login.css */
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    border-radius: 8px;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Input field styles */
+input[type="email"],
+input[type="password"] {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover {
+    border-color: #007bff; /* Bootstrap primary color on hover */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button styles */
+button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Success and error messages */
+.text-success {
+    margin-top: 10px;
+    color: green;
+}
+
+.text-danger {
+    margin-top: 10px;
+    color: red;
+}
+
+
+.btn-teal {
+    background-color: #008080; /* Teal color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+}
+
+.btn-teal:hover {
+    background-color: #006666; /* Darker teal on hover */
+}
