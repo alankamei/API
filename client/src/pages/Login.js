@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import '../styles/login.css'; // Import your custom CSS file
+import { Link } from "react-router-dom";
 
 function Login() {
   const [success, setSuccess] = useState(null);
@@ -59,6 +60,7 @@ function Login() {
           />
         </div>
         <button type='submit' className='btn btn-teal'>Login</button>
+        <p>Don't have an account? <Link to='/signin'>Signup</Link></p>
         {success && <p className="text-success">{success}</p>}
         {error && <p className="text-danger">{error}</p>}
       </form>
