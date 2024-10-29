@@ -24,12 +24,29 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:8000/api/login/', formData);
       setSuccess(response.data.message);
+      
+      // Access the username from the user object
+      if (response.data.user && response.data.user.username) {
+        localStorage.setItem('username', response.data.user.username); // Store username
+        console.log('Storing username:', response.data.user.username); // Log the stored username
+      } else {
+        console.error('Username not found in response:', response.data);
+      }
+  
       setFormData({ email: "", password: "" });
     } catch (error) {
-      console.error(error.response.data); // Log the error response
-      setError(error.response.data.detail || 'Login failed');
+      console.error(error);
+      if (error.response) {
+        setError(error.response.data.detail || 'Login failed');
+      } else {
+        setError('Network error or server not reachable');
+      }
     }
   };
+  
+  
+  
+  
 
   return (
     <div className="container">
