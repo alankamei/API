@@ -6,11 +6,13 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './components/Home';
 import Navbar from './pages/Navbar';
+import { UserProvider } from './UserContext';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    
+      <UserProvider>
+        <Router>
       <Navbar/>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -18,7 +20,8 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
         </Routes>
       </Router>
-    </div>
+      </UserProvider>
+    
   );
 }
 

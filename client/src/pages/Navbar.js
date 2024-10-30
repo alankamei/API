@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
+import { useUser } from '../UserContext';
 
 function Navbar() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem('username');
-    if (loggedInUser) {
-      setUser(loggedInUser);
-    }
-  }, []);
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('username'); // Clear stored username
-  };
+  const {user, logout} = useUser();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">

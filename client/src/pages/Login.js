@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import '../styles/login.css'; // Import your custom CSS file
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../UserContext";
+
+
 
 function Login() {
   const [success, setSuccess] = useState(null);
@@ -10,6 +13,9 @@ function Login() {
     email: "",
     password: ""
   });
+
+  const {login} = useUser();
+const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -28,12 +34,14 @@ function Login() {
       // Access the username from the user object
       if (response.data.user && response.data.user.username) {
         localStorage.setItem('username', response.data.user.username); // Store username
+        login(response.data.user.username);
         console.log('Storing username:', response.data.user.username); // Log the stored username
       } else {
         console.error('Username not found in response:', response.data);
       }
   
       setFormData({ email: "", password: "" });
+      navigate('/');
     } catch (error) {
       console.error(error);
       if (error.response) {

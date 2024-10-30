@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import '../styles/signup.css'; // Import your custom CSS
+import '../styles/signup.css'; 
 
 function Signup() {
     const [error, setError] = useState(null);
