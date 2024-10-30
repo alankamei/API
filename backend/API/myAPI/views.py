@@ -3,6 +3,11 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import SignupSerializer, LoginSerializer
+from django.shortcuts import render
+
+
+def home(request):
+    return render(request, 'Home.html')
 
 class SignupView(generics.CreateAPIView):
     serializer_class = SignupSerializer
