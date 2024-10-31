@@ -1,12 +1,12 @@
 
 import './App.css';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './components/Home';
 import Navbar from './pages/Navbar';
-import { UserProvider } from './UserContext';
+import { UserProvider, useUser } from './UserContext';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
         <Router>
       <Navbar/>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login/>}/>
+        <Route path='/' element={<ProtectedHome />} />
+        <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
         </Routes>
       </Router>
@@ -24,5 +24,11 @@ function App() {
     
   );
 }
+const ProtectedHome = () => {
+  const { user } = useUser();
+
+  // If user is logged in, render Home. Otherwise, redirect to Login.
+  return user ? <Home /> : <Navigate to="/login" />;
+};
 
 export default App;
