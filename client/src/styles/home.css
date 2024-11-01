@@ -1,12 +1,8 @@
-.link{
-    display: flex;
-    gap: 10px;
-}
-
-.home {
-    display: felx;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: row;
-}
+.card {
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  

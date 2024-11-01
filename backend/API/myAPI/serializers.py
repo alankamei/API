@@ -17,9 +17,6 @@ class SignupSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-from django.contrib.auth import authenticate
-from rest_framework import serializers
-from .models import CustomUser
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
