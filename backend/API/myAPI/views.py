@@ -4,10 +4,17 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import SignupSerializer, LoginSerializer
 from django.shortcuts import render
+from .models import CustomUser
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def home(request):
-    return render(request, 'Home.html')
+    userlist = CustomUser.objects.all();
+    context = {
+        'userlist':userlist
+    }
+    return render(request, 'Home.html', context)
 
 class SignupView(generics.CreateAPIView):
     serializer_class = SignupSerializer
