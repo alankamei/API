@@ -7,5 +7,9 @@
 </head>
 <body>
     <h2>Gaizz! We're serving response to the Frontend [ReactJs]</h2>
+    {% for user in userlist %}
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+    {% endfor %}
 </body>
 </html>
